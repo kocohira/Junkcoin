@@ -120,7 +120,7 @@ OBJS= \
     obj/noui.o
 
 
-all: testcoind
+all: junkcoind
 
 # auto-generated dependencies:
 -include obj/*.P
