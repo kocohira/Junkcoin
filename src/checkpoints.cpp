@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2012 Litecoin Developers
-// Copyright (c) 2013 Junkcoin Developers
+// Copyright (c) 2013 JKC Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -31,6 +31,9 @@ namespace Checkpoints
             ( 11, uint256("0xc8fc42e967eebdeafcabbd9050a545617f8685d53f2ebcd8f0fa5002b7e62a86"))
             ( 59, uint256("0xcdde8a3e42fa8888df2db8bf6673b29f5e2ae29951275d452686c47acb51cb66"))
             (104, uint256("0x206fe8cc678598456a11041fac65c8e096d9e26c887e391977fdad41e7add208"))
+            (10000, uint256("0x7ddbb237b18ffedfa1680a0560d135a9bca247654ab3eef1cc5a39c33074f364"))
+            (30030, uint256("0x895f2c50bdf86c3446712d6ff3da448d32e3803a09cb438ad784dbac5c1baf64"))
+            (50005, uint256("0xb43e13a918dd208a58fd42aae6aeb51a42e24631cdeb89b2307b62d5353513b9"))
 			;
         /*
         boost::assign::map_list_of
