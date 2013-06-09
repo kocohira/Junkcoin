@@ -2,6 +2,7 @@ src/*.exe
 src/junkcoind
 src/test_junkcoin
 src/build.h
+src/*/obj
 .*.swp
 *.*~*
 *.bak
