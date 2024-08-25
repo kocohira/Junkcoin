@@ -39,18 +39,21 @@ jobs:
     #- name: Verify Qt installation
     # run: dir C:\Qt
     
-    
     - name: Set up Visual Studio environment
       shell: pwsh
       run: |
-        Start-Process "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" -ArgumentList "x64" -Wait -NoNewWindow
+        # Load Visual Studio environment variables
+        Invoke-Expression "& 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' x64"
 
     - name: Build with qmake
       shell: pwsh
       run: |
+        # Add Qt paths to environment variables
         $env:PATH += ";D:\a\Junkcoin\Qt\6.2.*/msvc2019_64\bin"
         $env:INCLUDE += ";D:\a\Junkcoin\Qt\6.2.*/msvc2019_64\include"
         $env:LIB += ";D:\a\Junkcoin\Qt\6.2.*/msvc2019_64\lib"
+        
+        # Run qmake and nmake
         & "D:\a\Junkcoin\Qt\6.2.*/msvc2019_64\bin\qmake.exe" junkcoin-qt-windows.pro
         & "nmake"
 
