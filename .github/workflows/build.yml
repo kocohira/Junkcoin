@@ -28,7 +28,6 @@ jobs:
         choco install visualstudio2019buildtools --params "--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK.19041"
 
     - name: Install Qt windows
-      if: matrix.os == 'windows-latest'
       uses: jurplel/install-qt-action@v3
       with:
         version: '6.2.*'
