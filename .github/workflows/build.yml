@@ -38,10 +38,16 @@ jobs:
     # 验证 Qt 安装路径
     #- name: Verify Qt installation
     # run: dir C:\Qt
-
+    
+    
+    - name: Set up Visual Studio environment
+    run: |
+      call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
+  
     # 使用 qmake 和 nmake 进行编译
     - name: Build with qmake
       run: |
+        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
         D:\a\Junkcoin/Qt\6.2.*/msvc2019_64\bin\qmake.exe junkcoin-qt-windows.pro
         nmake
 
