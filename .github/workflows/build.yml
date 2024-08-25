@@ -32,7 +32,9 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
         version: '6.2.*'
-        traget: 'desktop'
+        host: 'windows'
+        target: 'desktop'
+        arch: 'win64_msvc2019_64'
 
     # 验证 Qt 安装路径
     - name: Verify Qt installation
