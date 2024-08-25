@@ -1,0 +1,42 @@
+name: Build Junkcoin-Qt on Windows
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    # 检出代码
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # 安装 Chocolatey 包管理器
+    - name: Install Chocolatey
+      run: |
+        set PATH=%PATH%;C:\ProgramData\chocolatey\bin
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+        Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+    # 安装 Visual Studio 构建工具和 Qt
+    - name: Install Build Tools and Qt
+      run: |
+        choco install visualstudio2019buildtools --params "--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows10SDK.19041"
+        choco install qt5
+
+    # 验证 Qt 安装路径
+    - name: Verify Qt installation
+      run: dir C:\Qt
+
+    # 使用 qmake 和 nmake 进行编译
+    - name: Build with qmake
+      run: |
+        C:\Qt\5.15.2\msvc2019_64\bin\qmake.exe junkcoin-qt-windows.pro
+        nmake
+
+    # 将编译产物保存为 GitHub Actions 的工件，以便下载
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: junkcoin-qt-build
+        path: ./release/  # 根据你的项目结构调整路径
