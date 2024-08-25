@@ -36,13 +36,13 @@ jobs:
         arch: 'win64_msvc2019_64'
 
     # 验证 Qt 安装路径
-    - name: Verify Qt installation
-      run: dir C:\Qt
+    #- name: Verify Qt installation
+    # run: dir C:\Qt
 
     # 使用 qmake 和 nmake 进行编译
     - name: Build with qmake
       run: |
-        C:\Qt\5.15.2\msvc2019_64\bin\qmake.exe junkcoin-qt-windows.pro
+        D:\a\Junkcoin/Qt\6.2.*/msvc2019_64\bin\qmake.exe junkcoin-qt-windows.pro
         nmake
 
     # 将编译产物保存为 GitHub Actions 的工件，以便下载
